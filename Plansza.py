@@ -37,8 +37,25 @@ class Plansza:
                 if event.type == pygame.QUIT:
                     run = False
 
-
             keys = pygame.key.get_pressed()
-            # warunki do zmiany pozycji obiektu
-            if keys[pygame.K_LEFT]:
+            ruch = False
+            self.swiat.czlowiek.czysc()
+
+            if keys[pygame.K_LEFT] and self.swiat.czlowiek.polozenie[0] - 1 >= 0:
+                self.swiat.czlowiek.polozenie = (self.swiat.czlowiek.polozenie[0] - 1, self.swiat.czlowiek.polozenie[1])
+                ruch = True
+            if keys[pygame.K_RIGHT] and self.swiat.czlowiek.polozenie[0] + 1 < self.N:
+                self.swiat.czlowiek.polozenie = (self.swiat.czlowiek.polozenie[0] + 1, self.swiat.czlowiek.polozenie[1])
+                ruch = True
+            if keys[pygame.K_UP] and self.swiat.czlowiek.polozenie[0] - 1 >= 0:
+                self.swiat.czlowiek.polozenie = (self.swiat.czlowiek.polozenie[0], self.swiat.czlowiek.polozenie[1] - 1)
+                ruch = True
+            if keys[pygame.K_DOWN] and self.swiat.czlowiek.polozenie[0] + 1 < self.N:
+                self.swiat.czlowiek.polozenie = (self.swiat.czlowiek.polozenie[0], self.swiat.czlowiek.polozenie[1] + 1)
+                ruch = True
+            if keys[pygame.K_SPACE]:
+                self.swiat.czlowiek.kolizja()
+
+            self.swiat.czlowiek.rysowanie()
+            if ruch:
                 self.swiat.wyjonajTure()

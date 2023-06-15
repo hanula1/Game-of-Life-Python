@@ -18,19 +18,18 @@ class BarszczSosnowskiego (Roslina):
 
         tmp = copy.copy(self.polozenie)
 
-        for i in range(len(self.swiat.organizmy)-1):
-            for j in range(-1, 2):
-                for k in range(-1, 2):
+        for i in self.swiat.organizmy:
+            for j in range(-1, 1):
+                for k in range(-1, 1):
                     tempo = (tmp[0] + j, tmp[1] + k)
                     if (k == 0 and j == 0) or tempo[0] >= self.swiat.plansza.N or tempo[0] < 0 or \
                             tempo[1] >= self.swiat.plansza.N or tempo[1] < 0:
                         continue
-                    if self.swiat.organizmy[i].polozenie == tempo:
-                        self.swiat.organizmy.pop(i)
-                        i -= 1
+                    if i.polozenie == tempo:
+                        self.swiat.organizmy.pop(self.swiat.organizmy.index(i))
 
-        for i in range(-1, 2):
-            for j in range(-1, 2):
+        for i in range(-1, 1):
+            for j in range(-1, 1):
                 tempo = (self.polozenie[0] + i, self.polozenie[1] + j)
                 if (i == 0 and j == 0) or tempo[0] >= self.swiat.plansza.N or tempo[0] < 0 or \
                         tempo[1] >= self.swiat.plansza.N or tempo[1] < 0:

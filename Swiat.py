@@ -19,8 +19,10 @@ class Swiat:
         self.powiadomienia = []
         self.plansza = plansza
         plansza.swiat = self
+        self.czlowiek = Czlowiek(self)
         self.losujDrop()
         self.plansza.wyswietl()
+
 
     def wyjonajTure(self):
         self.czyscPowiadomienia()
@@ -36,7 +38,7 @@ class Swiat:
         self.rysujPowiadomienia()
 
     def rysujSwiat(self):
-        self
+        pass
         # Implementation of rysujSwiat in Python
 
     def pustePole(self, x, y):
@@ -56,9 +58,6 @@ class Swiat:
 
     def czyscPowiadomienia(self):
         self.powiadomienia = []
-        # size = len(self.powiadomienia)
-        # for i in range(size):
-        #     self.powiadomienia.pop(0)
 
     def losujDrop(self):
         for i in range(self.plansza.N):
@@ -83,10 +82,10 @@ class Swiat:
                 self.organizmy.append(Trawa(self))
             elif liczba == 9:
                 self.organizmy.append(WilczeJagody(self))
-#           elif liczba == 10:
-#                self.organizmy.append(CyberOwca(self))
+            elif liczba == 10:
+                self.organizmy.append(CyberOwca(self))
 
-#        self.organizmy.append(Czlowiek(self))
+        self.organizmy.append(self.czlowiek)
 
-        for i in range(len(self.organizmy)):
-            self.organizmy[i].rysowanie()
+        for i in self.organizmy:
+            i.rysowanie()
