@@ -1,0 +1,7 @@
+from Plansza import Plansza
+from Swiat import Swiat
+
+
+plansza = Plansza(10)
+swiat = Swiat(plansza)
+swiat.wyjonajTure()
